@@ -21,9 +21,9 @@ public class SubscriptionController {
 
     private final ResponseDto responseDto = new ResponseDto();
 
-    @PostMapping(value ="/topic/{id}", produces = { "application/json" })
+    @PostMapping(value ="/topic", produces = { "application/json" })
     public ResponseDto createSubscription(
-        @PathVariable Integer id,
+        @RequestBody Integer id,
         Authentication authentication
         ) {
             User user = userService.getUserByEmail(authentication.getName());

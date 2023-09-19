@@ -1,7 +1,11 @@
 package com.openclassrooms.mddapi.service;
 
+import com.openclassrooms.mddapi.dto.PostDto;
 import com.openclassrooms.mddapi.dto.UserRegisterDto;
+import com.openclassrooms.mddapi.dto.UserUpdateDto;
+import com.openclassrooms.mddapi.model.Post;
 import com.openclassrooms.mddapi.model.Role;
+import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.RoleRepository;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -60,6 +64,17 @@ public class UserService {
                 createRole(user)
             );
         }
+    }
+
+    public void updateUser(UserUpdateDto userUpdateDto, User authUser) {
+        User user = new User();
+        user.setId(authUser.getId());
+        user.setName(userUpdateDto.getName());
+        user.setEmail(userUpdateDto.getEmail());
+        user.setPassword(authUser.getPassword());
+        user.setUpdatedAt(OffsetDateTime.now());
+        user.setCreatedAt(authUser.getCreatedAt());
+        userRepository.save(user);
     }
 
     private Role createRole(User user) {
