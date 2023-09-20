@@ -1,7 +1,7 @@
 <div class="posts">
   <div class="wrapper">
     <div class="cards-posts">
-      <mat-card class="mat-card-post" >
+      <mat-card class="mat-card-post" *ngIf="post">
         <mat-card-header>
           <mat-card-title><span>{{ post.title }}</span></mat-card-title>
         </mat-card-header>
@@ -14,7 +14,23 @@
             {{ post.description }}
           </p>
         </mat-card-content>
+        <div class="messages" *ngIf="comments">
+          <div *ngFor="let comment of comments">{{ comment.content}}<-------------------></div>
+        </div>
       </mat-card>
+
+      <form class="login-form" [formGroup]="commentForm" (ngSubmit)="submit()" >
+        <div class="form-content">
+          <div>
+            <textarea matInput placeholder="Contenu de l'article" formControlName="content"></textarea>
+          </div>
+        </div>
+        <div class="submit-button">
+          <button mat-raised-button color="primary" type="submit" [disabled]="commentForm.invalid">Créer</button>
+          <p *ngIf="onError" class="error">An error occurred</p>
+        </div>
+      </form>
+
     </div>
   </div>
 </div>

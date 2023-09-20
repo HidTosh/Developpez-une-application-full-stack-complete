@@ -8,17 +8,17 @@ import {Comment} from "../interfaces/comment.interface";
 @Injectable({
   providedIn: 'root'
 })
-export class PostsService {
+export class CommentService {
 
   private pathService = 'api/comments';
 
   constructor(private httpClient: HttpClient) { }
 
-  public getPostsComments(postId: Array<number>): Observable<Array<Post>> {
-    return this.httpClient.get<Array<Post>>(`${this.pathService}/post/${postId}`);
+  public getPostsComments(postId: number): Observable<Array<Comment>> {
+    return this.httpClient.get<Array<Comment>>(`${this.pathService}/post/${postId}`);
   }
 
-  public createComments(comment: Comment): Observable<AuthSuccess> {
-    return this.httpClient.post<AuthSuccess>(`${this.pathService}`, comment);
+  public createComments(formComment: FormData): Observable<AuthSuccess> {
+    return this.httpClient.post<AuthSuccess>(`${this.pathService}`, formComment);
   }
 }

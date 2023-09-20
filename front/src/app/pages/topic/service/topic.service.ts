@@ -19,4 +19,8 @@ export class TopicService {
   public getNoneSubscriptionsTopics(listIds: Array<number>): Observable<Array<Topic>> {
     return this.httpClient.get<Array<Topic>>(`${this.pathService}/none_subscription?values=${listIds}`);
   }
+
+  public getTopics(): Observable<Array<Topic>> {
+    return this.httpClient.get<Array<Topic>>(this.pathService);
+  }
 }

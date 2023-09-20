@@ -18,8 +18,8 @@ export class PostsService {
     return this.httpClient.get<Array<Post>>(`${this.pathService}/subscription?values=${listIds}`);
   }
 
-  public create(post: Post): Observable<AuthSuccess> {
-    return this.httpClient.post<AuthSuccess>(`${this.pathService}`, post);
+  public create(formPost: FormData): Observable<AuthSuccess> {
+    return this.httpClient.post<AuthSuccess>(`${this.pathService}`, formPost);
   }
 
   public delete(id: number): Observable<any> {

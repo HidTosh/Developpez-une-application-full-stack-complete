@@ -20,6 +20,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {PostsModule} from "./pages/posts/posts.module";
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const materialModule = [
   MatFormFieldModule,
@@ -33,7 +34,7 @@ const materialModule = [
 ]
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, UserComponent],
+  declarations: [AppComponent, HomeComponent, UserComponent, NotFoundComponent],
     imports: [
         CommonModule,
         BrowserModule,

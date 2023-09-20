@@ -44,7 +44,7 @@ export class ListComponent implements OnInit {
   }
 
   public sortPosts(): void {
-    console.log("sortPosts");
+    this.listPosts = this.listPosts.reverse()
   }
 
   public viewPost(id: number): void {

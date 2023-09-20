@@ -8,6 +8,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatIconModule} from "@angular/material/icon";
 import { DetailComponent } from './components/detail/detail.component';
 import { CreateComponent } from './components/create/create.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 
 
@@ -23,7 +25,10 @@ import { CreateComponent } from './components/create/create.component';
         MatButtonModule,
         MatCardModule,
         MatTooltipModule,
-        MatIconModule
+        MatIconModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule
     ]
 })
 export class PostsModule { }
