@@ -1,3 +1,13 @@
+.arrow-back p {
+  margin: 50px 0 0 80px;
+}
+
+.mat-icon-back {
+  font-size: 40px !important;
+  width: 40px;
+  height: 40px;
+}
+
 .register {
   display: flex;
   align-items: center;
@@ -6,43 +16,40 @@
 
   .title {
     text-align: center;
-    margin: 0 0 55px 0;
-    font-size: 20px;
+    margin: 0 25px 60px 0;
+    font-size: 26px;
   }
 
-  .submit-button {
-    text-align: center;
-    margin: 20px 0 0 0;
+  .form-content {
+    label {
+      font-size: 15px;
+      color: #525252;
+    }
 
-    button {
-      width: 120px;
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: solid 1px;
+      margin: 3px 0 20px 0;
+      width: 250px;
+      height: 22px;
+    }
+
+    .error-input {
+      margin-bottom: 25px;
+      color: #ff0f0fad;
+      font-size: 13px;
     }
   }
 }
 
-.arrow-back p {
-  margin: 50px 0 0 80px;
-}
+.submit-button {
+  text-align: center;
+  margin: 20px 0 0 0;
 
-.form-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-input {
-  padding: 10px;
-  border-radius: 5px;
-  border: solid 1px;
-  margin: 3px 0 20px 0;
-  width: 220px;
-}
-
-label {
-  font-size: 13px;
-  color: #5c5c5a;
-}
-
-.button-password {
-  right: 35px;
+  button {
+    width: 130px;
+    height: 38px;
+    font-size: 16px;
+  }
 }

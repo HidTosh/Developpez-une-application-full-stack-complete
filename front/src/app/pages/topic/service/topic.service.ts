@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {Topic} from "../../../interfaces/topic.interface";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Topic } from "../../../interfaces/topic.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TopicService {
-
-  private pathService = 'api/topics';
+  private pathService: string = 'api/topics';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,5 +17,9 @@ export class TopicService {
 
   public getNoneSubscriptionsTopics(listIds: Array<number>): Observable<Array<Topic>> {
     return this.httpClient.get<Array<Topic>>(`${this.pathService}/none_subscription?values=${listIds}`);
+  }
+
+  public getTopics(): Observable<Array<Topic>> {
+    return this.httpClient.get<Array<Topic>>(this.pathService);
   }
 }

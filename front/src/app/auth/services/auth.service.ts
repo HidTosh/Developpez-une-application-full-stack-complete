@@ -4,20 +4,19 @@ import { Observable } from 'rxjs';
 import { LoginRequest } from '../interfaces/loginRequest.interface';
 import { RegisterRequest } from '../interfaces/registerRequest.interface';
 import { AuthSuccess } from '../interfaces/authSuccess.interface';
-import {User} from "../../interfaces/user.interface";
-import {UpdateRequest} from "../interfaces/UpdateRequest.interface";
+import { User } from "../../interfaces/user.interface";
+import { UpdateRequest } from "../interfaces/UpdateRequest.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private pathService = 'api/auth';
+  private pathService: string = 'api/auth';
 
   constructor(private httpClient: HttpClient) { }
 
   public register(registerRequest: RegisterRequest): Observable<AuthSuccess> {
-
     return this.httpClient.post<AuthSuccess>(`${this.pathService}/register`, registerRequest);
   }
 

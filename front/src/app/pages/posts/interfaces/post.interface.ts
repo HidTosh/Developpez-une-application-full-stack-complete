@@ -3,6 +3,7 @@ export interface Post {
   title: string,
   description: string,
   user_name: string,
+  topic_title: string,
   createdAt: Date,
   updatedAt: Date
 }

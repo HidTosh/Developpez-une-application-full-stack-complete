@@ -1,17 +1,18 @@
-<div class="profil">
-  <div>
-    <div class="title">
-      <p>Profil utilisateur</p>
-    </div>
-    <form class="login-form" [formGroup]="userForm" (ngSubmit)="submit()">
-      <div class="form-content">
-        <div>
-          <input matInput placeholder="Name" formControlName="name">
-        </div>
-        <div>
-          <input matInput placeholder="Email" formControlName="email">
-        </div>
+<div class="user-content">
+  <div class="profil">
+    <div>
+      <div class="title">
+        <p>Profil utilisateur</p>
       </div>
+      <form class="login-form" [formGroup]="userForm" (ngSubmit)="submit()">
+        <div class="form-content">
+          <div>
+            <input matInput placeholder="Name" formControlName="name">
+          </div>
+          <div>
+            <input matInput placeholder="Email" formControlName="email">
+          </div>
+        </div>
         <div class="submit-button">
           <button mat-raised-button color="primary" type="submit">Sauvegarder</button>
           <p *ngIf="onError" class="error">An error occurred</p>
@@ -19,18 +20,17 @@
         <div class="save-btn">
           <button mat-raised-button color="default" (click)="logout()" type="submit">Se déconnecter</button>
         </div>
-    </form>
-  </div>
-</div>
-
-<hr>
-
-<div class="subscription">
-  <div>
-    <div class="title">
-      <p>Abonnements</p>
+      </form>
     </div>
-    <div class="wrapper">
+  </div>
+  <hr>
+
+
+  <div class="subscription">
+    <div>
+      <div class="title">
+        <p>Abonnements</p>
+      </div>
       <div class="cards-subscriptions">
         <mat-card class="mat-card-subscription" *ngFor="let topic of listTopic;let indexOfTopic=index;">
           <mat-card-header>
@@ -40,17 +40,18 @@
             <p>
               {{ topic.description | slice:0:255 }}
               <span
-                  *ngIf="lenghtListTopics > 255" matTooltip="{{ topic.description | slice:255:lenghtListTopics }}">
-                ...
-              </span>
+                *ngIf="lenghtListTopics > 255" matTooltip="{{ topic.description | slice:255:lenghtListTopics }}">
+              ...
+            </span>
             </p>
           </mat-card-content>
           <mat-card-actions>
             <button
-                mat-raised-button
-                color="primary"
-                (click)="unsubscribeTopic(indexOfTopic, topic)"
-                type="submit">
+              mat-raised-button
+              color="primary"
+              (click)="unsubscribeTopic(indexOfTopic, topic)"
+              class="submit-unsubscribe"
+              type="submit">
               Se Désabonner
             </button>
           </mat-card-actions>
@@ -58,4 +59,5 @@
       </div>
     </div>
   </div>
+
 </div>

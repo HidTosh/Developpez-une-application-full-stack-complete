@@ -1,4 +1,4 @@
-<div class="div-button">
+<div class="content">
   <div class="mat-cards-actions">
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="createPost()" type="button">Créer un article</button>
@@ -7,24 +7,22 @@
       <button mat-raised-button color="default" (click)="sortPosts()" type="button">Trier par <mat-icon>arrow_downward</mat-icon></button>
     </mat-card-actions>
   </div>
-</div>
-
-<div class="posts">
-  <div class="wrapper">
+  <div class="posts">
     <div class="cards-posts">
-      <mat-card class="mat-card-post" *ngFor="let post of listPosts;let indexOfPosts=index;">
+      <mat-card class="mat-card-post" *ngFor="let post of listPosts">
         <mat-card-header>
-          <mat-card-title><span (click)="viewPost(post.id)">{{ post.title }}</span></mat-card-title>
+          <mat-card-title>
+            <span class="visit-url" (click)="viewPost(post.id)">{{ post.title }}</span>
+          </mat-card-title>
         </mat-card-header>
         <div class="mat-cards-subtitles">
-          <mat-card-subtitle>{{ post.user_name }}</mat-card-subtitle>
-          <mat-card-subtitle>{{ post.createdAt  | date:'yyyy-MM-dd' }}</mat-card-subtitle>
+          <p class="subtitle">{{ post.user_name }}</p>
+          <p class="subtitle">{{ post.createdAt  | date:'yyyy-MM-dd' }}</p>
         </div>
-        <mat-card-content>
-          <p>
-            {{ post.description }}
-          </p>
-        </mat-card-content>
+        <p class="cards-content">
+          {{ post.description | slice:0:580 }}
+          <span *ngIf="post.description.length > 580" class="visit-url" (click)="viewPost(post.id)">...</span>
+        </p>
       </mat-card>
     </div>
   </div>

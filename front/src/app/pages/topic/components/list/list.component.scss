@@ -1,43 +1,30 @@
-.topic {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 5em;
+.topics {
+  max-width: 1700px;
+  margin: 50px auto 0 auto;
 
-  .title {
-    text-align: center;
-    margin: 0 10px 45px 0;
-    font-size: 26px;
+  .submit-subscribe {
+    width: 160px;
+    height: 42px;
+    font-size: 18px;
+    border-radius: 7px;
   }
 
-  .submit-button {
-    text-align: center;
-    margin: 20px 0 0 0;
+  .mat-card-title {
+    font-size: 28px;
+  }
 
-    button {
-      width: 120px;
-    }
+  .mat-card-actions {
+    text-align: center;
+  }
+
+  .mat-card-content {
+    margin-top: 15px;
+    font-size: 16px;
   }
 }
 
 ::ng-deep .mat-card-header .mat-card-header-text{
   margin: 0;
-}
-
-.mat-card-actions {
-  text-align: center;
-}
-
-.mat-card-subscription {
-  max-width: 525px;
-  min-width: 525px;
-  background: aliceblue;
-  margin: 25px;
-}
-
-.wrapper{
-  border: 1px dotted rgb(231 231 231);
-  width: 1600px;
 }
 
 .cards-subscriptions {
@@ -46,6 +33,72 @@
   gap: 10px;
   justify-content: space-around;
 }
-.cards-subscriptions>* {
-  flex: 1 1 160px;
+
+.mat-card-subscription {
+  width: 700px;
+  background: #f1f1f1;
+  height: 170px;
+  padding: 35px;
+  border-radius: 10px;
+  margin: 20px 0 20px 0;
+}
+
+@media only screen and (max-width: 1700px) {
+  .mat-card-subscription {
+    width: 600px;
+    height: 180px;
+  }
+  .mat-card-content {
+    height: 70px;
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+  .mat-card-subscription {
+    width: 500px;
+    height: 195px;
+  }
+  .mat-card-content {
+    height: 90px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .mat-card-subscription {
+    width: 375px;
+    height: 210px;
+  }
+  .mat-card-content {
+    height: 110px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .mat-card-subscription {
+    width: 450px;
+    height: 200px;
+  }
+  .mat-card-content {
+    height: 95px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .mat-card-subscription {
+    width: 320px;
+    height: 230px;
+  }
+  .mat-card-content {
+    height: 125px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .mat-card-subscription {
+    width: 260px;
+    height: 260px;
+  }
+  .mat-card-content {
+    height: 155px;
+  }
 }

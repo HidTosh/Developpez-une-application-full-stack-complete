@@ -1,1 +1,32 @@
-<p>create works!</p>
+<div class="arrow-back">
+  <p>
+    <a [routerLink]="backToPost"><mat-icon class="mat-icon-back">keyboard_backspace</mat-icon></a>
+  </p>
+</div>
+<div class="article">
+  <div>
+    <div class="title">
+      <p>Créer un nouvel article</p>
+    </div>
+    <form class="login-form" [formGroup]="postForm" (ngSubmit)="submit()" >
+      <div class="form-content">
+        <div>
+          <select matNativeControl required formControlName="topic_id">
+            <option class="disabled-option" disabled selected value="">Sélectionner un thème</option>-
+            <option [value]="topic.id" *ngFor="let topic of topics">{{ topic.title }}</option>
+          </select>
+        </div>
+        <div>
+          <input matInput placeholder="Titre de l'article" formControlName="title">
+        </div>
+        <div>
+          <textarea matInput placeholder="Contenu de l'article" formControlName="description"></textarea>
+        </div>
+      </div>
+      <div class="submit-button">
+        <button mat-raised-button color="primary" type="submit" [disabled]="postForm.invalid">Créer</button>
+        <p *ngIf="onError" class="error">An error occurred</p>
+      </div>
+    </form>
+  </div>
+</div>

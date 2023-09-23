@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {Post} from "../interfaces/post.interface";
-import {AuthSuccess} from "../../../auth/interfaces/authSuccess.interface";
-import {PostUpdate} from "../interfaces/postUpdate";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Post } from "../interfaces/post.interface";
+import { AuthSuccess } from "../../../auth/interfaces/authSuccess.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
-
-  private pathService = 'api/posts';
+  private pathService: string = 'api/posts';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,8 +16,8 @@ export class PostsService {
     return this.httpClient.get<Array<Post>>(`${this.pathService}/subscription?values=${listIds}`);
   }
 
-  public create(post: Post): Observable<AuthSuccess> {
-    return this.httpClient.post<AuthSuccess>(`${this.pathService}`, post);
+  public create(formPost: FormData): Observable<AuthSuccess> {
+    return this.httpClient.post<AuthSuccess>(`${this.pathService}`, formPost);
   }
 
   public delete(id: number): Observable<any> {
@@ -29,9 +27,4 @@ export class PostsService {
   public getPost(id: number): Observable<Post> {
     return this.httpClient.get<Post>(`${this.pathService}/${id}`);
   }
-
-  /*
-  public update(postUpdate: PostUpdate): Observable<AuthSuccess> {
-    return this.httpClient.put<AuthSuccess>(`${this.pathService}`, postUpdate);
-  }*/
 }

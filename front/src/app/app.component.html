@@ -1,9 +1,8 @@
 <div *ngIf="showHeader()" class="app">
   <router-outlet></router-outlet>
 </div>
-
 <div *ngIf="!showHeader()" class="app">
-  <header class="header">
+  <header>
     <nav>
       <div class="logo" *ngIf="$isLogged() | async; else notLogged">
         <a [routerLink]="routerLinkPost">
@@ -27,7 +26,7 @@
         <li><a [routerLink]="routerLinkPost" [ngClass]="{'active' :  router.url == routerLinkPost}">Articles</a></li>
         <li><a [routerLink]="routerLinkTopic" [ngClass]="{'active' :  router.url == routerLinkTopic}">Thèmes</a></li>
         <li>
-          <a [routerLink]="routerLinkAccount" class="user-account" [ngClass]="{'active' :  router.url == routerLinkAccount}">
+          <a [routerLink]="routerLinkAccount" [ngClass]="{'active' :  router.url == routerLinkAccount}">
             <mat-icon>person_outline</mat-icon>
           </a>
         </li>
