@@ -1,3 +1,8 @@
+<div class="arrow-back">
+  <p>
+    <a [routerLink]="backToPost"><mat-icon class="mat-icon-back">keyboard_backspace</mat-icon></a>
+  </p>
+</div>
 <div class="article">
   <div>
     <div class="title">
@@ -7,7 +12,7 @@
       <div class="form-content">
         <div>
           <select matNativeControl required formControlName="topic_id">
-            <option disabled selected>Sélectionner un thème</option>
+            <option class="disabled-option" disabled selected value="">Sélectionner un thème</option>-
             <option [value]="topic.id" *ngFor="let topic of topics">{{ topic.title }}</option>
           </select>
         </div>

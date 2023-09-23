@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {Topic} from "../../../interfaces/topic.interface";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Topic } from "../../../interfaces/topic.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TopicService {
-
-  private pathService = 'api/topics';
+  private pathService: string = 'api/topics';
 
   constructor(private httpClient: HttpClient) { }
 

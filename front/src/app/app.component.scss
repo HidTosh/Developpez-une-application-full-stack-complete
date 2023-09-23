@@ -1,31 +1,32 @@
 li, a {
   color: black;
   padding: 0;
-  margin: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  margin: 0 4px 0 4px;
 
   a {
     display: block;
     padding: 7px 15px;
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 500;
     transition: 0.2s all ease-in-out;
     color: black;
   }
-
-  .user-account{
-    border: solid 1px;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    padding: 9px 0 0 10px !important;
-    background: #f3f3f3;
-  }
 }
 
-.header {
+li:last-child > a {
+  border: solid 1px #c7c7c6;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  padding: 9px 0 0 10px !important;
+  background: #f3f3f3;
+}
+
+
+header {
   position: sticky;
   top: 0;
   width: 100%;
@@ -34,15 +35,15 @@ li, a {
   color: black;
   background: #fff;
 
-  .logo img {
-    width: 140px;
-  }
-
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+  }
+
+  img {
+    width: 140px;
   }
 }
 
@@ -50,18 +51,19 @@ li, a {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  margin: 25px;
 
-.menu .active {
-  color: #3a3afb;
-}
+  .active {
+    color: #3a3afb;
+  }
 
-.menu:hover a {
-  opacity: 0.4;
-}
+  :hover a {
+    opacity: 0.4;
+  }
 
-.menu a:hover {
-  opacity: 1;
+  a:hover {
+    opacity: 1;
+  }
 }
 
 .menu-icon {
@@ -82,23 +84,27 @@ li, a {
     background-color: white;
     align-items: center;
     position: absolute;
-    top: 70px;
+    top: 40px;
     right: 0;
-    width: 35%;
+    width: 140px;
     z-index: 1;
     padding: 32px 16px;
     transform: scale(1, 0);
     transform-origin: top;
     transition: transform 0.3s ease-in-out;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  }
 
-  .menu a {
-    margin-left: 12px;
-  }
+    li {
+      margin-bottom: 10px;
+    }
 
-  .menu li {
-    margin-bottom: 10px;
+    li:last-child {
+      margin-top: 90px;
+    }
+
+    a {
+      margin-left: 12px;
+    }
   }
 
   .menu-icon {

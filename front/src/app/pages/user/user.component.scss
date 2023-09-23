@@ -1,20 +1,6 @@
-::ng-deep .mat-card-header .mat-card-header-text{
-  margin: 0;
-}
-
-.mat-card-actions {
-  text-align: center;
-}
-
-.mat-card-subscription {
-  max-width: 525px;
-  min-width: 525px;
-  background: aliceblue;
-  margin: 25px;
-}
-
-hr {
-  width: 80%;
+.user-content {
+  width: 1700px;
+  margin: auto;
 }
 
 .profil, .subscription {
@@ -34,23 +20,20 @@ hr {
     margin: 20px 0 0 0;
 
     button {
-      width: 120px;
+      width: 130px;
+      height: 38px;
+      font-size: 16px;
     }
   }
-}
-
-.form-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 input {
   padding: 10px;
   border-radius: 5px;
-  border: solid 1px;
+  border: solid 1px blue;
   margin: 3px 0 20px 0;
-  width: 220px;
+  width: 250px;
+  height: 22px;
 }
 
 .save-btn {
@@ -64,9 +47,8 @@ input {
   }
 }
 
-.wrapper{
-  border: 1px dotted rgb(231 231 231);
-  width: 1600px;
+::ng-deep .mat-card-header .mat-card-header-text{
+  margin: 0;
 }
 
 .cards-subscriptions {
@@ -74,7 +56,113 @@ input {
   flex-wrap: wrap;
   gap: 10px;
   justify-content: space-around;
+
+  .mat-card-actions {
+    text-align: center;
+  }
+
+  .submit-unsubscribe {
+    width: 160px;
+    height: 42px;
+    font-size: 18px;
+    border-radius: 7px;
+  }
+
+  .mat-card-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
 }
-.cards-subscriptions>* {
-  flex: 1 1 160px;
+
+.mat-card-subscription {
+  width: 700px;
+  background: #f1f1f1;
+  height: 170px;
+  padding: 35px;
+  border-radius: 10px;
+  margin: 20px 0 20px 0;
+}
+
+@media only screen and (max-width: 1700px) {
+  .user-content {
+    width: 1500px;
+  }
+
+  .mat-card-subscription {
+    width: 600px;
+    height: 180px;
+  }
+  .mat-card-content {
+    height: 70px;
+  }
+}
+
+@media only screen and (max-width: 1450px) {
+  .user-content {
+    width: 1250px;
+  }
+
+  .mat-card-subscription {
+    width: 500px;
+    height: 195px;
+  }
+  .mat-card-content {
+    height: 90px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .user-content {
+    width: 1000px;
+  }
+
+  .mat-card-subscription {
+    width: 375px;
+    height: 210px;
+  }
+  .mat-card-content {
+    height: 110px;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .user-content {
+    width: 600px;
+  }
+
+  .mat-card-subscription {
+    width: 450px;
+    height: 200px;
+  }
+  .mat-card-content {
+    height: 95px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .user-content {
+    width: 400px;
+  }
+
+  .mat-card-subscription {
+    width: 320px;
+    height: 230px;
+  }
+  .mat-card-content {
+    height: 125px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .user-content {
+    width: 300px;
+  }
+
+  .mat-card-subscription {
+    width: 260px;
+    height: 260px;
+  }
+  .mat-card-content {
+    height: 155px;
+  }
 }

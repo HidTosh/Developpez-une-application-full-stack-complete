@@ -1,3 +1,13 @@
+.arrow-back p {
+  margin: 50px 0 0 80px;
+}
+
+.mat-icon-back {
+  font-size: 40px !important;
+  width: 40px;
+  height: 40px;
+}
+
 .article {
   display: flex;
   align-items: center;
@@ -15,7 +25,9 @@
     margin: 20px 0 0 0;
 
     button {
-      width: 120px;
+      width: 130px;
+      height: 38px;
+      font-size: 16px;
     }
   }
 }
@@ -29,17 +41,22 @@
 input, textarea {
   padding: 10px;
   border-radius: 5px;
-  border: solid 1px;
   margin: 3px 0 20px 0;
   width: 250px;
+  height: 22px;
+  font-size: 15px;
+  border: solid 1px blue;
 }
 
 select {
   padding: 10px;
   border-radius: 5px;
-  border: solid 1px;
+  border: solid 1px blue;
   margin: 3px 0 20px 0;
   width: 270px;
+  height: 44px;
+  background: white;
+  font-size: 15px;
 }
 
 textarea {

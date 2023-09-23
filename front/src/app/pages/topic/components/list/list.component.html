@@ -1,5 +1,4 @@
-<div class="topic">
-  <div class="wrapper">
+<div class="topics">
     <div class="cards-subscriptions">
       <mat-card class="mat-card-subscription" *ngFor="let topic of listTopic;let indexOfTopic=index;">
         <mat-card-header>
@@ -19,12 +18,12 @@
             mat-raised-button
             color="primary"
             (click)="scribeTopic(indexOfTopic, topic)"
-            type="submit">
+            type="submit"
+            class="submit-subscribe">
             S'abonner
           </button>
         </mat-card-actions>
       </mat-card>
     </div>
-  </div>
 </div>
 

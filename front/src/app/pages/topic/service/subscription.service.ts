@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {User} from "../../../interfaces/user.interface";
-import {HttpClient} from "@angular/common/http";
-import {LoginRequest} from "../../../auth/interfaces/loginRequest.interface";
-import {AuthSuccess} from "../../../auth/interfaces/authSuccess.interface";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { AuthSuccess } from "../../../auth/interfaces/authSuccess.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubscriptionService {
-
-  private pathService = '/api/subscriptions';
+  private pathService: string = '/api/subscriptions';
 
   constructor(private httpClient: HttpClient) { }
 

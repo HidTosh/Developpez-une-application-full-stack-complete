@@ -1,36 +1,44 @@
-<div class="posts">
-  <div class="wrapper">
-    <div class="cards-posts">
-      <mat-card class="mat-card-post" *ngIf="post">
-        <mat-card-header>
-          <mat-card-title><span>{{ post.title }}</span></mat-card-title>
-        </mat-card-header>
-        <div class="mat-cards-subtitles">
-          <mat-card-subtitle>{{ post.user_name }}</mat-card-subtitle>
-          <mat-card-subtitle>{{ post.createdAt  | date:'yyyy-MM-dd' }}</mat-card-subtitle>
-        </div>
-        <mat-card-content>
-          <p>
-            {{ post.description }}
-          </p>
-        </mat-card-content>
-        <div class="messages" *ngIf="comments">
-          <div *ngFor="let comment of comments">{{ comment.content}}<-------------------></div>
-        </div>
-      </mat-card>
-
-      <form class="login-form" [formGroup]="commentForm" (ngSubmit)="submit()" >
-        <div class="form-content">
-          <div>
-            <textarea matInput placeholder="Contenu de l'article" formControlName="content"></textarea>
-          </div>
-        </div>
-        <div class="submit-button">
-          <button mat-raised-button color="primary" type="submit" [disabled]="commentForm.invalid">Créer</button>
-          <p *ngIf="onError" class="error">An error occurred</p>
-        </div>
-      </form>
-
+<div class="detail-post">
+  <div class="post">
+    <div class="arrow-back">
+      <div>
+        <a [routerLink]="backToPost"><mat-icon class="mat-icon-back">keyboard_backspace</mat-icon></a>
+      </div>
+      <div *ngIf="post">
+        <p class="title">{{ post.title | titlecase }}</p>
+      </div>
+    </div>
+    <div class="mat-card-post" *ngIf="post">
+      <div class="post-subtitles">
+        <mat-card-subtitle>{{ post.createdAt  | date:'yyyy-MM-dd' }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ post.user_name | titlecase}}</mat-card-subtitle>
+        <mat-card-subtitle>{{ post.topic_title}}</mat-card-subtitle>
+      </div>
+      <div class="description">
+        {{ post.description }}
+      </div>
     </div>
   </div>
+  <hr/>
+  <div class="comments">
+    <div class="section-title">
+      <p>Commentaires</p>
+    </div>
+    <div class="messages" *ngFor="let comment of comments">
+      <div class="user-message">{{ comment.user_name }}</div>
+      <div class="content">{{ comment.content}}</div>
+    </div>
+    <form class="message-form" [formGroup]="commentForm" (ngSubmit)="submit()" >
+      <div class="form-content">
+        <div>
+          <textarea maxlength="450" matInput placeholder="Écrivez ici votre commentaire" formControlName="content"></textarea>
+        </div>
+      </div>
+      <div class="submit-button">
+        <button mat-raised-button color="default" type="submit"><img class="logo-menu" src="/assets/icons8-send.png" alt="logo" /></button>
+        <p *ngIf="onError" class="error">An error occurred</p>
+      </div>
+    </form>
+  </div>
 </div>
+

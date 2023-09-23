@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import {Topic} from "../../../../interfaces/topic.interface";
-import {SubscriptionService} from "../../../topic/service/subscription.service";
-import {PostsService} from "../../services/posts.service";
-import {formatDate} from "@angular/common";
-import {Post} from "../../interfaces/post.interface";
-import {Router} from "@angular/router";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SubscriptionService } from "../../../topic/service/subscription.service";
+import { PostsService } from "../../services/posts.service";
+import { Post } from "../../interfaces/post.interface";
+import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   public lentListPosts! : number;
   public listPosts! : Array<Post>;
+  public subscriptionSubscription$!: Subscription;
+  public postSubscription$!: Subscription;
 
   constructor(
     private subscriptionService: SubscriptionService,
@@ -25,21 +26,27 @@ export class ListComponent implements OnInit {
     this.getSubscriptionsPosts()
   }
 
+  ngOnDestroy(): void {
+    this.subscriptionSubscription$?.unsubscribe();
+    this.postSubscription$?.unsubscribe();
+  }
+
   public getSubscriptionsPosts(): void {
-    this.subscriptionService.getTopics()
+    this.subscriptionSubscription$ = this.subscriptionService.getTopics()
       .subscribe(
-        (listInteger: Array<number>) => {
-          this.postsService.getPostsSubscriptions(listInteger)
+        (listInteger: Array<number>): void => {
+          this.postSubscription$ = this.postsService.getPostsSubscriptions(listInteger)
             .subscribe(
-              (list: Array<Post>) => {
+              (list: Array<Post>): void => {
                 this.listPosts = list;
                 this.lentListPosts = list.length;
-              })
-        })
+              }
+            )
+        }
+      )
   }
 
   public createPost(): void {
-    console.log("createPost");
     this.router.navigate(['/posts/create'])
   }
 
@@ -48,25 +55,6 @@ export class ListComponent implements OnInit {
   }
 
   public viewPost(id: number): void {
-    console.log("viewPost");
-    console.log(id)
     this.router.navigate([`/posts/detail/${id}`])
   }
-
-  public viewDetail(indexOfTopic: number, topic: Topic): void {
-    /*this.subscriptionService.create(topic.id)
-      .subscribe({
-          next: (_) => {
-            this.matSnackBar.open(`${topic.title} subscribed !`, 'Close', { duration: 3000 })
-            this.listTopic.splice(indexOfTopic, 1);
-          },
-          error: err => {
-            console.error('An error occurred :', err);
-            this.matSnackBar.open(`An error occurred !`, 'Close', { duration: 3000 });
-          }
-        }
-      )*/
-  }
-
-  protected readonly formatDate = formatDate;
 }

@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import {SessionService} from "../../../../service/session.service";
-import {User} from "../../../../interfaces/user.interface";
-import {Topic} from "../../../../interfaces/topic.interface";
-import {SubscriptionService} from "../../service/subscription.service";
-import {TopicService} from "../../service/topic.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Topic } from "../../../../interfaces/topic.interface";
+import { SubscriptionService } from "../../service/subscription.service";
+import { TopicService } from "../../service/topic.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
   public lentListTopics! : number;
   public listTopic! : Array<Topic>;
+  public getTopicsSubscription$!: Subscription;
+  public topicSubscription$!: Subscription;
+  public createSubscription$!: Subscription;
 
   constructor(
     private subscriptionService: SubscriptionService,
-    private sessionService: SessionService,
     private topicService: TopicService,
     private matSnackBar: MatSnackBar
   ) { }
@@ -26,11 +27,17 @@ export class ListComponent implements OnInit {
     this.getNoneSubscriptionsTopics()
   }
 
+  ngOnDestroy(): void {
+    this.getTopicsSubscription$?.unsubscribe();
+    this.topicSubscription$?.unsubscribe();
+    this.createSubscription$?.unsubscribe();
+  }
+
   public getNoneSubscriptionsTopics(): void {
-    this.subscriptionService.getTopics()
+    this.getTopicsSubscription$ = this.subscriptionService.getTopics()
       .subscribe(
         (listInteger: Array<number>) => {
-          this.topicService.getNoneSubscriptionsTopics(listInteger)
+          this.topicSubscription$ = this.topicService.getNoneSubscriptionsTopics(listInteger)
             .subscribe(
               (list: Array<Topic>) => {
                 this.listTopic = list;
@@ -41,7 +48,7 @@ export class ListComponent implements OnInit {
   }
 
   public scribeTopic(indexOfTopic: number, topic: Topic): void {
-    this.subscriptionService.create(topic.id)
+    this.createSubscription$ = this.subscriptionService.create(topic.id)
       .subscribe({
           next: (_) => {
             this.matSnackBar.open(`${topic.title} subscribed !`, 'Close', { duration: 3000 })
@@ -54,10 +61,4 @@ export class ListComponent implements OnInit {
         }
       )
   }
-
-  /*
-  get user(): User | undefined {
-    return this.sessionService.user;
-  }*/
-
 }
