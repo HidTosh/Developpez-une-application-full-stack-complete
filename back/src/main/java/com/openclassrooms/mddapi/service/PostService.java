@@ -1,6 +1,7 @@
 package com.openclassrooms.mddapi.service;
 
 import com.openclassrooms.mddapi.dto.PostDto;
+import com.openclassrooms.mddapi.dto.PostUpdateDto;
 import com.openclassrooms.mddapi.model.Post;
 import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.model.User;
@@ -35,12 +36,12 @@ public class PostService {
         }
     }
 
-    public void updatePost(PostDto postDto) {
-        Topic topic = topicRepository.findById(postDto.getTopic_id()).orElse(null);
+    public void updatePost(PostUpdateDto postUpdateDto) {
+        Topic topic = topicRepository.findById(postUpdateDto.getTopic_id()).orElse(null);
         if (topic != null) {
-            Post post = getPost(postDto.getId());
-            post.setTitle(postDto.getTitle());
-            post.setDescription(postDto.getDescription());
+            Post post = getPost(postUpdateDto.getId());
+            post.setTitle(postUpdateDto.getTitle());
+            post.setDescription(postUpdateDto.getDescription());
             post.setTopic(topic);
             post.setUpdatedAt(OffsetDateTime.now());
             postRepository.save(post);

@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostDto {
+public class PostUpdateDto {
+    private Integer id;
 
     private String title;
 

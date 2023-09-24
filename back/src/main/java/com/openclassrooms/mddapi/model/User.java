@@ -23,10 +23,10 @@ public class User {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(length = 100)
+    @Column(nullable = false, unique = true, length = 100)
     private String name;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
     @Column(name = "created_at")

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../auth/services/auth.service";
-import {Router} from "@angular/router";
-import {SessionService} from "../../service/session.service";
-import {User} from "../../interfaces/user.interface";
-import {Topic} from "../../interfaces/topic.interface";
-import {SubscriptionService} from "../topic/service/subscription.service";
-import {TopicService} from "../topic/service/topic.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {UpdateRequest} from "../../auth/interfaces/UpdateRequest.interface";
-import {AuthSuccess} from "../../auth/interfaces/authSuccess.interface";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AuthService } from "../../auth/services/auth.service";
+import { Router } from "@angular/router";
+import { SessionService } from "../../service/session.service";
+import { User } from "../../interfaces/user.interface";
+import { Topic } from "../../interfaces/topic.interface";
+import { SubscriptionService } from "../topic/service/subscription.service";
+import { TopicService } from "../topic/service/topic.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { UpdateRequest } from "../../auth/interfaces/UpdateRequest.interface";
+import { AuthSuccess } from "../../auth/interfaces/authSuccess.interface";
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',

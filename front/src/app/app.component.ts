@@ -12,6 +12,7 @@ import { Observable, Subscription } from "rxjs";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  public title: string = 'front';
   public routerLinkAccount: string = "/user/account";
   public routerLinkTopic: string = "/topics";
   public routerLinkPost: string = "/posts";

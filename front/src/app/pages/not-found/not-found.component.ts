@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../../interfaces/user.interface";
-import {AuthService} from "../../auth/services/auth.service";
-import {FormBuilder} from "@angular/forms";
-import {Router} from "@angular/router";
-import {SessionService} from "../../service/session.service";
+import { User} from "../../interfaces/user.interface";
+import { AuthService } from "../../auth/services/auth.service";
+import { SessionService } from "../../service/session.service";
 
 @Component({
   selector: 'app-not-found',
@@ -18,7 +16,7 @@ export class NotFoundComponent implements OnInit {
   ) { }
   ngOnInit() {
 
-    this.authService.me().subscribe((user: User) => {
+    this.authService.me().subscribe((user: User): void => {
       this.sessionService.logIn(user);
     });
   }

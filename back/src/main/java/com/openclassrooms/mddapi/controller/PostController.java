@@ -1,5 +1,6 @@
 package com.openclassrooms.mddapi.controller;
 
+import com.openclassrooms.mddapi.dto.PostUpdateDto;
 import com.openclassrooms.mddapi.dto.ResponseDto;
 import com.openclassrooms.mddapi.dto.PostDto;
 import com.openclassrooms.mddapi.model.Post;
@@ -47,8 +48,8 @@ public class PostController {
             consumes = { MediaType.MULTIPART_FORM_DATA_VALUE },
             produces = MediaType.APPLICATION_JSON_VALUE
         )
-    public ResponseDto updatePost(@ModelAttribute PostDto postDto) {
-        postService.updatePost(postDto);
+    public ResponseDto updatePost(@ModelAttribute PostUpdateDto postUpdateDto) {
+        postService.updatePost(postUpdateDto);
         responseDto.setResponse("Post updated !");
         return responseDto;
     }
