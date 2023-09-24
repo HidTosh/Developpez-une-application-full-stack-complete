@@ -58,4 +58,8 @@ public class Post {
     public String getUser_name() {
         return user.getName();
     }
+
+    public String getTopic_title() {
+        return topic.getTitle();
+    }
 }

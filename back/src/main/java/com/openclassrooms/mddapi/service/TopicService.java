@@ -42,6 +42,7 @@ public class TopicService {
 
     public List<Topic> getAllTopicsNoneSubscription(List<String> listTopicIds){
         List<Topic> listTopics = new ArrayList<Topic>();
+        if (listTopicIds.isEmpty()) { listTopicIds.add("0"); }
         listTopics.addAll(topicRepository.findTopicsNoneSubscription(listTopicIds));
         return listTopics;
     }

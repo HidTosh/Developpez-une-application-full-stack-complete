@@ -1,11 +1,8 @@
 package com.openclassrooms.mddapi.service;
 
-import com.openclassrooms.mddapi.dto.PostDto;
 import com.openclassrooms.mddapi.dto.UserRegisterDto;
 import com.openclassrooms.mddapi.dto.UserUpdateDto;
-import com.openclassrooms.mddapi.model.Post;
 import com.openclassrooms.mddapi.model.Role;
-import com.openclassrooms.mddapi.model.Topic;
 import com.openclassrooms.mddapi.model.User;
 import com.openclassrooms.mddapi.repository.RoleRepository;
 import com.openclassrooms.mddapi.repository.UserRepository;
@@ -24,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
+import java.util.regex.Pattern;
 
 import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 
@@ -39,11 +37,19 @@ public class UserService {
     public PasswordEncoder passwordEncoder = passwordEncoder();
 
     public Authentication userAuthentication(
-            String email,
-            String password,
-            HttpServletRequest req,
-            AuthenticationManager authenticationManager
+        String emailUsername,
+        String password,
+        HttpServletRequest req,
+        AuthenticationManager authenticationManager
         ) {
+            String email;
+            if (!isValidEmail(emailUsername)) {
+                User user = getUserByName(emailUsername);
+                email = (user != null) ? user.getEmail() : emailUsername;
+            } else {
+                email = emailUsername;
+            }
+
             UsernamePasswordAuthenticationToken authReq =
                     new UsernamePasswordAuthenticationToken(email, password);
             Authentication auth = authenticationManager.authenticate(authReq);
@@ -97,6 +103,21 @@ public class UserService {
 
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public User getUserByName(String name) {
+        return userRepository.findByName(name);
+    }
+    public boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+            "[a-zA-Z0-9_+&*-]+)*@" +
+            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+            "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 
     @Bean
