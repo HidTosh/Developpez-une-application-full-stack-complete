@@ -10,13 +10,13 @@ import java.util.List;
 public interface TopicRepository extends JpaRepository<Topic, Integer> {
     @Modifying
     @Query(
-        value = "SELECT * FROM mdd.topics WHERE id IN (:listTopicId)", nativeQuery = true
+        value = "SELECT * FROM topics WHERE id IN (:listTopicId)", nativeQuery = true
     )
     List<Topic> findTopicsSubscription(List<String> listTopicId);
 
     @Modifying
     @Query(
-        value = "SELECT * FROM mdd.topics WHERE id NOT IN (:listTopicId)", nativeQuery = true
+        value = "SELECT * FROM topics WHERE id NOT IN (:listTopicId)", nativeQuery = true
     )
     List<Topic> findTopicsNoneSubscription(List<String> listTopicId);
 
