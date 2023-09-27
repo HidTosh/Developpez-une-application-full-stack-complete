@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserRegisterDto {
     @NotEmpty
-    @Size(min = 5, message = "user name should have at least 3 characters")
+    @Size(min = 5, message = "user name should have at least 5 characters")
     private String name;
 
     @NotEmpty
