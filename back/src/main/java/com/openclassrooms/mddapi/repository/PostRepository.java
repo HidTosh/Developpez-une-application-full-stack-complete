@@ -10,7 +10,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Integer> {
     @Modifying
     @Query(
-        value = "SELECT * FROM mdd.posts WHERE topic_id in (:listTopicsIds) ORDER BY created_at DESC", nativeQuery = true
+        value = "SELECT * FROM posts WHERE topic_id in (:listTopicsIds) ORDER BY created_at DESC", nativeQuery = true
     )
     List<Post> findByTopicId(List<String> listTopicsIds);
 }

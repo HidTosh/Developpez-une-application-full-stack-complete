@@ -11,7 +11,7 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
     @Modifying
     @Query(
-        value = "SELECT * FROM mdd.comments WHERE post_id = :postId ORDER BY created_at DESC", nativeQuery = true
+        value = "SELECT * FROM comments WHERE post_id = :postId ORDER BY created_at DESC", nativeQuery = true
     )
     List<Comment> findByPostIds(Integer postId);
 }
